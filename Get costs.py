@@ -41,6 +41,17 @@ move(North)
 move(East)
 move(North) 
 move(East)
+
+Kcost = get_cost(Entities.Sunflower)
+for item in Kcost:
+		Kcusto = Kcost[item]
+
+print(list(Kcost)[0],Kcusto)
+costGrid[3] = Kcusto
+
+move(North)
+move(North)
+
 move(North)	
 move(East)	
 move(East)

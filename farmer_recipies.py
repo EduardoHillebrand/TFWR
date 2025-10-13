@@ -8,7 +8,8 @@ PlotPlans = {
 	'T':Grids.plotList_T, 
 	'O':Grids.plotList_O,
 	'Z':Grids.plotList_z,
-	'X':Grids.plotList_gpt
+	'X':Grids.plotList_gpt,
+	'S':Grids.plotList_sunflower
 }
 
 

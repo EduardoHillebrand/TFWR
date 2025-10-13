@@ -28,7 +28,8 @@ def CheckExpand():
 		Unlocks.Dinosaurs,
 		Unlocks.Mazes,
 		Unlocks.Watering,
-		Unlocks.Polyculture
+		Unlocks.Polyculture,
+		Unlocks.Megafarm
 	]
 	for thing in things:
 		tryExpand(thing)
@@ -40,8 +41,9 @@ def tryExpand(that):
 
 	for item in cost:
 		custo = cost[item]            
-		total = num_items(item)       
-		if total <= custo * 1.35:     
+		total = num_items(item)
+		minimo = custo * 1.35
+		if total <= minimo:     
 			return  
 			
 	print("!")
