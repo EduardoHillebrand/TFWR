@@ -21,14 +21,14 @@ def next_move(x, y, width, height):
 		
 		
 def play_snake():
-	set_farm_size(11)
+	set_world_size(12)
 	n = get_world_size()   
 	width = n
 	height = n
 	change_hat(Hats.Dinosaur_Hat)
 	while True:
 		x, y = get_pos_x(), get_pos_y()
-		if x==0 and y==31 :
+		if x==0 and y==n-1 :
 			while get_pos_y() != 0:
 				move(South)
 		d = next_move(x, y, width, height)
