@@ -1,3 +1,4 @@
+import AllUnlocks
 def rotacionar(matriz):
 	if not matriz or not matriz[0]:
 		return []
@@ -20,17 +21,8 @@ def rotacionar(matriz):
 	
 	
 def CheckExpand():
-	things = [
-		Unlocks.Expand,
-		Unlocks.Trees,
-		Unlocks.Carrots,
-		Unlocks.Cactus,
-		Unlocks.Dinosaurs,
-		Unlocks.Mazes,
-		Unlocks.Watering,
-		Unlocks.Polyculture,
-		Unlocks.Megafarm
-	]
+	things = AllUnlocks.all
+	
 	for thing in things:
 		tryExpand(thing)
 

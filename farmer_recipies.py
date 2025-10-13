@@ -5,11 +5,10 @@ import Grids
 
 
 PlotPlans = {
-	'T':Grids.plotList_T, 
-	'O':Grids.plotList_O,
-	'Z':Grids.plotList_z,
-	'X':Grids.plotList_gpt,
-	'S':Grids.plotList_sunflower
+	'P':Grids.plotList_Pumpkin,
+	'S':Grids.plotList_Sunflower,
+	'H':Grids.plotList_HT,
+	'T':Grids.plotList_HT
 }
 
 
