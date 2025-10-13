@@ -2,11 +2,11 @@ import farmer_recipies
 import myMap
 import functions
 
-def loop_Production():
+def loop_Production(PlotTerms):
 	WS = get_world_size()
-	LenPP = len(myMap.PlotTerms)
+	LenPP = len(PlotTerms)
 	counter = -1
-	#set_farm_size(SIZE)
+	
 	
 	while get_pos_y() > 0:
 		move(South)
@@ -25,7 +25,7 @@ def loop_Production():
 			counter +=1
 			if counter >  LenPP-1 :
 				return 
-			plotList = farmer_recipies.getPlotPlans(counter)
+			plotList = farmer_recipies.getRightPlotPlans(PlotTerms[counter])
 			SIZE = len(plotList) -1
 			#print(functions.GetLabel(myMap.PlotTerms[counter]))
 		

@@ -8,7 +8,9 @@ PlotPlans = {
 	'P':Grids.plotList_Pumpkin,
 	'S':Grids.plotList_Sunflower,
 	'H':Grids.plotList_HT,
-	'T':Grids.plotList_HT
+	'T':Grids.plotList_HT,
+	'K':Grids.plotList_Cactus,
+	'C':Grids.plotList_Carrots
 }
 
 
@@ -27,14 +29,13 @@ def grid_fill(valor):
 
 
 def getPlotPlans(int):
-	return functions.rotacionar(
-		getRightPlotPlans(myMap.PlotTerms[int])
-	)
+	return getRightPlotPlans(myMap.PlotTerms[int])
+	
 
 def getRightPlotPlans(str):
 	if str in PlotPlans:
 		grid = PlotPlans[str]
-		return grid
+		return functions.rotacionar(grid)
 	return grid_fill(str)
 	
 	

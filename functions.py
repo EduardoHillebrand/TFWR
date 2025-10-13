@@ -1,4 +1,5 @@
 import AllUnlocks
+
 def rotacionar(matriz):
 	if not matriz or not matriz[0]:
 		return []
@@ -26,6 +27,7 @@ def CheckExpand():
 	for thing in things:
 		tryExpand(thing)
 
+
 def tryExpand(that):
 	cost = get_cost(that)  
 	if not cost:
@@ -41,28 +43,34 @@ def tryExpand(that):
 	print("!")
 	unlock(that)
 
-def GetLabel(str):
-	if str == "C" :
-		return "Carrot"
-	elif str == "B" :
-		return "Bush"
-	elif str == "T" :
-		return "Wood" 
-	elif str == "P" :
-		return "Pumpkin"
-	elif str == "S" :
-		return "Sunflower"
-	elif str == "K" :
-		return "Cactus"
-	elif str == "O" :
-		return "Optimized"
-	elif str == "Z" :
-		return "Love"
-	elif str == "X" :
-		return "IA Generated"
-	else:
-		return "Hay"
-		
+def CheckExpander():
+	peso = 9999999999999999999999999999
+	index = AllUnlocks.all[0]
+	necessario = AllUnlocks.all[0]
+	
+	for thing in AllUnlocks.all:
+		cost = get_cost(thing)
+		if cost:
+			somatorio = 0    
+			for item in cost:
+				total = num_items(item)
+				custo = cost[item]        
+				minimo = custo * 1.35
+				somatorio += minimo - num_items(item)
+				
+			if somatorio < peso :
+				peso = somatorio
+				index = thing
+				custoMaisAlto = 0
+				for item2 in cost:
+					custo = cost[item]
+					minimo = custo * 1.35
+					if custoMaisAlto < minimo:
+						custoMaisAlto = minimo
+						necessario = item2
+				
+	
+	return [necessario,index,peso]	
 		
 def RandomTry(percent,func,what):
 	rand = random() * 100 // 1
@@ -74,6 +82,12 @@ def RandomTry(percent,func,what):
 		return 1
 	return 0
 			
+
+def ReturnHome(x=0,y=0):
+	while get_pos_y() > y:
+		move(South)
+	while get_pos_x() > x:
+		move(West)
 		
 		
 		
