@@ -31,8 +31,10 @@ def play_snake():
 		if x==0 and y==n-1 :
 			while get_pos_y() != 0:
 				move(South)
-		d = next_move(x, y, width, height)
-		if d == None:
+			d = East
+		else:
+			d = next_move(x, y, width, height)
+		if d == None or not can_move(d):
 			break
 		moved = move(d)  
 			

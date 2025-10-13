@@ -4,13 +4,13 @@ import DinoLogic
 import functions
 
 while True:	
-	set_world_size(32)
+	if get_world_size()  != 32:
+		set_world_size(32)
 	functions.ReturnHome()
 	plans = functions.CheckExpander()
 	plan = plans[0]
 	
-	#CheckExpander
-	#
+	print(plans[1])
 	
 	if  plan == Items.Gold:
 		if num_items(Items.Weird_Substance) > 50000 and num_items(Items.Power) > 5000 :
@@ -32,7 +32,7 @@ while True:
 	elif plan == Items.Cactus:
 		change_hat(Hats.Wizard_Hat)	
 		harvest()
-		ProductionLogic.loop_Production(['K','K','K','K','S',''])
+		ProductionLogic.loop_Production(['K','K','K','K','P','S',''])
 	
 	elif plan == Items.Pumpkin:
 		change_hat(Hats.Wizard_Hat)	
@@ -53,6 +53,9 @@ while True:
 		change_hat(Hats.Wizard_Hat)	
 		harvest()
 		ProductionLogic.loop_Production(['H','T','H','T','S',''])
+
+	else:
+		print(plans[0],plans[1],plans[2])
 		
 	
 	functions.CheckExpand()
