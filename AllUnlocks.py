@@ -28,3 +28,16 @@ all = [
 	Unlocks.Cactus,
 	Unlocks.Dinosaurs
 ]
+
+AllItems = [
+	Items.Gold,
+	Items.Power,
+	Items.Bone,
+	Items.Cactus,
+	Items.Pumpkin,
+	Items.Carrot,
+	Items.Wood,
+	Items.Hay
+]
+
+

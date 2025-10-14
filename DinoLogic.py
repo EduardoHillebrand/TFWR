@@ -20,8 +20,10 @@ def next_move(x, y, width, height):
 
 		
 		
-def play_snake():
-	set_world_size(12)
+def play_snake(size=6):
+	if get_world_size()  != size:
+		set_world_size(size)
+	
 	n = get_world_size()   
 	width = n
 	height = n

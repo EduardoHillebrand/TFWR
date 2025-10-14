@@ -45,8 +45,8 @@ def tryExpand(that):
 
 def CheckExpander():
 	peso = 9999999999999999999999999999
-	index = AllUnlocks.all[0]
-	necessario = AllUnlocks.all[0]
+	index = False
+	necessario = False
 	
 	for thing in AllUnlocks.all:
 		cost = get_cost(thing)
@@ -88,7 +88,18 @@ def ReturnHome(x=0,y=0):
 		move(South)
 	while get_pos_x() > x:
 		move(West)
-		
+
+
+def menor_item():
+	itens = AllUnlocks.AllItems
+	menor = None
+	menor_qtd = 999999999999999
+	for item in itens:
+		qtd = num_items(item)
+		if qtd < menor_qtd:
+			menor = item
+			menor_qtd = qtd
+	return menor
 		
 		
 		

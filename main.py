@@ -8,7 +8,10 @@ while True:
 		set_world_size(32)
 	functions.ReturnHome()
 	plans = functions.CheckExpander()
-	plan = plans[0]
+	if plans != False:
+		plan = plans[0]
+	else:
+		plan = menor_item()
 	
 	print(plans[1])
 	
@@ -23,7 +26,7 @@ while True:
 	elif plan == Items.Bone:
 		if num_items(Items.Cactus) > 30000 and num_items(Items.Power) > 5000 :
 			change_hat(Hats.Traffic_Cone)
-			DinoLogic.play_snake()
+			DinoLogic.play_snake(12)
 		else :
 			change_hat(Hats.Wizard_Hat)	
 			harvest()
@@ -53,6 +56,11 @@ while True:
 		change_hat(Hats.Wizard_Hat)	
 		harvest()
 		ProductionLogic.loop_Production(['H','T','H','T','S',''])
+		
+	elif plan == Items.Power:
+		change_hat(Hats.Sunflower_Hat)	
+		harvest()
+		ProductionLogic.loop_Production(['S','S','S',''])
 
 	else:
 		print(plans[0],plans[1],plans[2])
@@ -63,5 +71,34 @@ while True:
 
 
 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 		
