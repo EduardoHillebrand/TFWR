@@ -1,4 +1,5 @@
 import AllUnlocks
+import ProductionLogic
 
 def rotacionar(matriz):
 	if not matriz or not matriz[0]:
@@ -44,7 +45,7 @@ def tryExpand(that):
 	unlock(that)
 
 def CheckExpander():
-	peso = 9999999999999999999999999999
+	peso = 9999
 	index = False
 	necessario = False
 	
@@ -54,17 +55,23 @@ def CheckExpander():
 			somatorio = 0    
 			for item in cost:
 				total = num_items(item)
-				custo = cost[item]        
+				custo = cost[item]
 				minimo = custo * 1.35
-				somatorio += minimo - num_items(item)
+				if total > minimo:
+					continue
+				faltam = minimo - num_items(item)
+				somatorio += faltam / minimo * 100
 				
 			if somatorio < peso :
 				peso = somatorio
 				index = thing
 				custoMaisAlto = 0
 				for item2 in cost:
-					custo = cost[item]
+					custo = cost[item2]
 					minimo = custo * 1.35
+					total = num_items(item2)
+					if total > minimo:
+						continue
 					if custoMaisAlto < minimo:
 						custoMaisAlto = minimo
 						necessario = item2
@@ -84,10 +91,18 @@ def RandomTry(percent,func,what):
 			
 
 def ReturnHome(x=0,y=0):
-	while get_pos_y() > y:
-		move(South)
-	while get_pos_x() > x:
-		move(West)
+	while get_pos_y() != y:
+		if(get_pos_y() > y):
+			move(South)
+		elif(get_pos_y() < y):
+			move(North)
+			
+	while get_pos_x() != x:
+		if(get_pos_x() > x):
+			move(West)
+		elif(get_pos_x() < x):
+			move(East)
+
 
 
 def menor_item():
@@ -101,6 +116,18 @@ def menor_item():
 			menor_qtd = qtd
 	return menor
 		
-		
+def do_flips(qtd):
+	counter = 0
+	while counter < qtd:
+		do_a_flip()
+		counter+=1
+	return "Happy now?"
+
+def harvest_farm_drone_function(function,params,pre_delay=0,pos_delay=0):
+	do_flips(pre_delay)
+	ProductionLogic.set_harvest_farm_drone_var(params)
+	spawn_drone(function)
+	ProductionLogic.set_harvest_farm_drone_var(None)
+	do_flips(1)
 		
 		

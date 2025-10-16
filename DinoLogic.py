@@ -31,9 +31,12 @@ def play_snake(size=6):
 	while True:
 		x, y = get_pos_x(), get_pos_y()
 		if x==0 and y==n-1 :
-			while get_pos_y() != 0:
-				move(South)
 			d = East
+			if can_move(South) : 
+				while get_pos_y() != 0:
+					move(South)
+			else:
+				break
 		else:
 			d = next_move(x, y, width, height)
 		if d == None or not can_move(d):

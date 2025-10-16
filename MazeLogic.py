@@ -1,4 +1,4 @@
-
+import functions
 def make_maze(size=6):
 	plant(Entities.Bush)
 	substance = size * 2**(num_unlocked(Unlocks.Mazes) - 1)
@@ -32,8 +32,15 @@ def find_and_harvest():
 		move(BACK[d])
 		d = BACK[d]
 
-def loop_mazes(size=6):	
-	make_maze(size)
-	find_and_harvest()
+def loop_mazes(size=6,repetitions = 1):	
+	t=0
+	if get_world_size()  != size:
+		set_world_size(size)
+	while t<repetitions:
+		t+=1
+		harvest()
+		functions.ReturnHome()
+		make_maze(size)
+		find_and_harvest()
 
 

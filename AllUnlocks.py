@@ -26,12 +26,12 @@ all = [
 	Unlocks.Dictionaries,
 	Unlocks.Utilities,
 	Unlocks.Cactus,
-	Unlocks.Dinosaurs
+	Unlocks.Dinosaurs,
+	Unlocks.Top_Hat
 ]
 
 AllItems = [
 	Items.Gold,
-	Items.Power,
 	Items.Bone,
 	Items.Cactus,
 	Items.Pumpkin,

@@ -3,70 +3,108 @@ import MazeLogic
 import DinoLogic
 import functions
 
+isFirst = True
+
 while True:	
 	if get_world_size()  != 32:
 		set_world_size(32)
-	functions.ReturnHome()
+
+	functions.CheckExpand()
+	if not isFirst:
+		functions.ReturnHome()
+		isFirst = False
+		
 	plans = functions.CheckExpander()
-	if plans != False:
+	if plans[0] != False:
 		plan = plans[0]
 	else:
-		plan = menor_item()
+		plan = functions.menor_item()
+		
+	if num_items(Items.Power) < 5000:
+		plan = Items.Power
 	
-	print(plans[1])
+	print(plans[1],'>',plans[0],' - ',plans[2])
 	
 	if  plan == Items.Gold:
 		if num_items(Items.Weird_Substance) > 50000 and num_items(Items.Power) > 5000 :
 			change_hat(Hats.Gold_Hat)
-			MazeLogic.loop_mazes(6)
+			#MazeLogic.loop_mazes(6,10)
+			MazeLogic.loop_mazes(12,1)
 		else :
-			change_hat(Hats.Wizard_Hat)	
+			change_hat(Hats.Gold_Hat)	
 			harvest()
-			ProductionLogic.loop_Production(['S','S',''])
+			map = ['S','S','']
+			for item in map:
+				functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
+				functions.do_flips(14)
+				do_flips()
 	elif plan == Items.Bone:
 		if num_items(Items.Cactus) > 30000 and num_items(Items.Power) > 5000 :
 			change_hat(Hats.Traffic_Cone)
 			DinoLogic.play_snake(12)
 		else :
-			change_hat(Hats.Wizard_Hat)	
+			if get_world_size()  != 32:
+				set_world_size(32)
+			change_hat(Hats.Traffic_Cone)	
 			harvest()
-			ProductionLogic.loop_Production(['K','K','K','K','S','S',''])
+			map = ['K','K','K','K','']
+			for item in map:
+				functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
+				functions.do_flips(14)
+				do_flips()
 	
 	elif plan == Items.Cactus:
-		change_hat(Hats.Wizard_Hat)	
+		change_hat(Hats.Cactus_Hat)	
 		harvest()
-		ProductionLogic.loop_Production(['K','K','K','K','P','S',''])
-	
+		map = ['K','K','K','K','']
+		for item in map:
+			functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
+			functions.do_flips(14)
+
 	elif plan == Items.Pumpkin:
 		change_hat(Hats.Wizard_Hat)	
 		harvest()
-		ProductionLogic.loop_Production(['P','P','P','P','S',''])
+		map = ['P','P','P','P','']
+		for item in map:
+			functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
+			functions.do_flips(14)
 	
 	elif plan == Items.Carrot:
-		change_hat(Hats.Wizard_Hat)	
+		change_hat(Hats.Carrot_Hat)	
 		harvest()
-		ProductionLogic.loop_Production(['C','C','C','C','S',''])
+		map = ['C','C','C','C','']
+		for item in map:
+			functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
+			functions.do_flips(14)
 		
 	elif plan == Items.Wood :
-		change_hat(Hats.Wizard_Hat)	
+		change_hat(Hats.Tree_Hat)	
 		harvest()
-		ProductionLogic.loop_Production(['H','T','H','T','S',''])
+		map = ['T','T','T','T','T']
+		for item in map:
+			functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
+			functions.do_flips(14)
 		
 	elif plan == Items.Hay:
-		change_hat(Hats.Wizard_Hat)	
+		change_hat(Hats.Green_Hat)	
 		harvest()
-		ProductionLogic.loop_Production(['H','T','H','T','S',''])
+		map = ['H','H','H','H','H']
+		for item in map:
+			functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
+			functions.do_flips(14)
 		
 	elif plan == Items.Power:
 		change_hat(Hats.Sunflower_Hat)	
 		harvest()
-		ProductionLogic.loop_Production(['S','S','S',''])
+		map = ['S','S','S','']
+		for item in map:
+			functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
+			functions.do_flips(14)
 
 	else:
 		print(plans[0],plans[1],plans[2])
 		
 	
-	functions.CheckExpand()
 
 
 
