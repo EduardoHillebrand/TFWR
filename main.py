@@ -37,7 +37,6 @@ while True:
 			for item in map:
 				functions.harvest_farm_drone_function(ProductionLogic.loop_ProductionForClones,[item])
 				functions.do_flips(14)
-				do_flips()
 	elif plan == Items.Bone:
 		if num_items(Items.Cactus) > 30000 and num_items(Items.Power) > 5000 :
 			change_hat(Hats.Traffic_Cone)
